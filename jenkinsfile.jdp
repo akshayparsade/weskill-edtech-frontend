@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+    stages{
+        stage('PULL'){
+            steps{
+                git branch: 'dev', url: 'https://github.com/akshayparsade/weskill-edtech-frontend.git'
+            }
+        }
+        stage('BUILD'){
+            steps{
+                sh '''npm install 
+                      npm run build '''
+            }
+        }
+        stage('DEPLOY'){
+            steps{
+                sh 'aws s3 sync dist/ s3://weskill-edtech-frontend-bux'
+            }
+        }
+    }
+}
