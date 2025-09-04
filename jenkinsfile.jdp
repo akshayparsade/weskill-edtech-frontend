@@ -14,7 +14,7 @@ pipeline{
         }
         stage('DEPLOY'){
             steps{
-                sh 'aws s3 sync dist/ s3://weskill-edtech-frontend-bux'
+                sh 'aws s3 sync dist/ s3://weskill-frontend-dev-buxx'
             }
         }
     }
